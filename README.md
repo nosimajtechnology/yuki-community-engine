@@ -1,124 +1,76 @@
-# Yuki Community Engine v1
+# Yuki Community Engine
 
-An AI-native character and community creative engine for Yuki / YUKI.EXE and the Y2K Dotcom ecosystem, built by Nosimaj Media.
+An easy creative tool for making canon-consistent images, memes, cinematics, and episodes with Yuki / YUKI.EXE from the Y2K Dotcom ecosystem.
 
-This repository converts an approved character turnaround, documented source hierarchy, and repeatable production workflows into an agent-readable system. It helps an AI agent make portraits, stills, scenes, memes, commercials, short cinematics, storyboards, and progressive episodes without quietly redesigning Yuki or inventing official lore.
+You do not need to know prompting.
 
-## Why it exists
+Tell the Engine what Yuki is doing. It handles her identity, Y2K-era grounding, camera direction, continuity, storyboards, animation prompts, and common repairs.
 
-Character generation usually fails in predictable ways: visual identity drifts, fan interpretation is mistaken for canon, storyboards reset between frames, and model-specific prompt tricks become inseparable from the character. This engine separates four layers:
+## What you need
 
-1. **Character canon** — visually immutable Yuki traits.
-2. **World canon** — verified Y2Kverse claims and grounded environment vocabulary.
-3. **Creative interpretation** — scene-level choices that may vary safely.
-4. **Production logic** — model-neutral workflows, continuity state, and optional adapters.
+- **A paid ChatGPT plan.** Personal Skills are not available on Free or Go. Managed workspaces may require admin approval.
+- **Image generation in ChatGPT** for pictures. The Engine makes the image in the chat.
+- **A video tool for video.** The Engine does not render video itself. It writes a prompt for Seedance, Kling, Sora, or another video tool. Those products and credits are separate.
 
-Lower-authority material can enrich a scene but cannot overwrite higher-authority canon.
+## Install in ChatGPT
 
-## What it can generate
+Install from [chatgpt.com](https://chatgpt.com) in a browser. If you also use the desktop app, add the Skill there separately.
 
-- Canonical character studies and portraits
-- Standalone stills and everyday or absurd scenes
-- Five-to-seven-shot short cinematics
-- Dynamic multi-angle storyboards
-- Community memes and remixable concepts
-- Fictional Y2Kverse commercials and public-service spots
-- Four-board progressive episodes, with an optional fifth board only when structurally necessary
-- Provider-ready image and video briefs through isolated adapters
+1. Download [yuki-community-engine.zip](https://github.com/nosimajtechnology/yuki-community-engine/releases/latest/download/yuki-community-engine.zip). **Do not unzip it.**
+2. In ChatGPT, open **Plugins** from the sidebar, then **Skills** → **Create** → **Upload from your computer**, and pick the zip.
+3. Start a new chat.
 
-## What it does not do
-
-- Declare fan art, search results, or generated images to be canon
-- Guarantee an external model will reproduce Yuki perfectly
-- Invent official biography, relationships, powers, locations, or history
-- Reproduce proprietary Nosimaj production techniques not included here
-- Grant rights to Yuki, Y2K Dotcom, third-party trademarks, or generated outputs
-- Publish or license this private repository
-
-## Quickstart
-
-Ask an agent to load `SKILL.md`, then give it a mode and a concept:
-
-> Use the Yuki Community Engine in CLASSIC CINEMATIC mode. Yuki enters an empty 2002-era mall arcade after closing and discovers every CRT cabinet displaying the same blinking cursor. No dialogue.
-
-The engine will:
-
-1. load the Tier 1 turnaround and character canon;
-2. classify every unverified story detail as interpretation;
-3. confirm only missing decisions that materially change the result;
-4. create the concept and genesis-frame brief;
-5. pause for approval;
-6. create a continuity-aware storyboard;
-7. pause for approval;
-8. create a model-neutral motion brief and, when requested, a provider adapter.
-
-For a faster start, see [`community/quickstart/quickstart.md`](community/quickstart/quickstart.md). For all modes, see [`engine/modes/modes.md`](engine/modes/modes.md).
-
-## Canon and reference priority
-
-| Tier | Authority | Current role |
-|---|---|---|
-| 1 | User/team-approved canonical reference | `assets/canon/yuki-turnaround.png`; absolute visual authority |
-| 2 | Official Y2K/Yuki material | Project identity and verified public statements |
-| 3 | Established community convention | Remix language and recurring community practice |
-| 4 | Historical/environment research | Period-correct objects, spaces, interfaces, and media |
-| 5 | Creative interpretation | New scenes, actions, props, outfits, and narrative premises |
-
-See [`docs/canon-policy.md`](docs/canon-policy.md) and [`canon/references/source-register.md`](canon/references/source-register.md).
-
-## Example workflow
+Use this as your first prompt:
 
 ```text
-MODE: SCENE
-CONCEPT: Yuki repairing a translucent desktop computer in a quiet bedroom at 2 a.m.
-FORMAT: 4:3 still
-CONSTRAINTS: no dialogue, historically plausible 1999–2002 consumer technology
+Load the "Yuki Community Engine" skill.
 ```
 
-Expected output: a compact intent summary, source/canon declaration, continuity state, composition and action plan, immutable character block, world grounding, negative constraints, and a model-neutral generation brief. The agent should not ask about details it can resolve safely from the engine.
-
-## Architecture
+Then describe your idea:
 
 ```text
-SKILL.md                         Agent entry point and routing
-canon/                           Character, world, and reference authority
-engine/                          Workflow, modes, continuity, storyboard logic
-adapters/                        Optional provider-specific translation layer
-community/                       Safe quickstart and remix surface
-examples/                        Eight textual dry-runs
-docs/                            Architecture, policy, contribution, portability
-scripts/validate_engine.py       Deterministic repository checks
+Make an image of Yuki working at a 2001 internet cafe.
 ```
 
-Creative intent always flows through canon and continuity before an adapter. Replacing an image or video provider must not change the character definition.
+If the picture looks right, reply `Approved.` If something is off, say exactly what:
 
-## Community-use philosophy
+```text
+Her hair is too short. Fix only that.
+```
 
-The engine should make good participation easier without requiring prompt-engineering knowledge. It asks only questions that change canon, story structure, delivery format, or provider constraints. Community remixes may be playful and transformative, but should be labeled as interpretations and must not be represented as official Y2K lore.
+## What you can make
 
-The public-facing layer intentionally includes portable rules and starter templates, not the entire Nosimaj internal production stack.
+- **CHARACTER** — clean character study
+- **STILL** — one finished picture
+- **SCENE** — one contained visual event
+- **CLASSIC CINEMATIC** — first frame → storyboard → video prompt
+- **MEME** — fast community remix
+- **COMMERCIAL** — fictional Y2Kverse ad
+- **EPISODE** — longer story across progressive storyboards
 
-## Current status
+You can name a mode or let the Engine choose.
 
-**v1 private founding implementation.** The canonical turnaround is installed, seven modes are defined, provider-neutral adapters are scaffolded, progressive episode logic is included, and eight textual scenarios have been dry-run. Paid image/video generations are not part of validation. Public release, open-source licensing, and external distribution require explicit approval.
+## Canonical Yuki reference
 
-Known limitations:
+This turnaround is the visual authority bundled with the Engine. It locks Yuki's face, cyan hair, blue eyes, paired wing ornaments, chibi proportions, oversized gloves, blue-white boots, and recognizable silhouette. Scenes, expressions, poses, props, and requested outfits may change.
 
-- The supplied turnaround establishes visual identity but not biography or behavioral lore.
-- Exact official brand colors and logo vector files have not been supplied.
-- Dynamic pages on the official site and X limited direct text verification during the 2026-08-26 research pass; source confidence is recorded rather than filled with assumptions.
-- Model-specific syntax and capabilities change; adapters must be rechecked at use time.
+![Yuki canonical character turnaround](./assets/canon/yuki-turnaround.png)
 
-## Attribution and rights
+## Need an idea?
 
-- **Yuki / YUKI.EXE and Y2Kverse material:** associated with the Y2K Dotcom ecosystem; ownership is not claimed by this repository.
-- **Engine architecture and documentation:** developed by Nosimaj Media for this founding implementation.
-- **Third-party outputs:** governed by the applicable model provider and the rights of referenced material.
-- **Community contributions:** remain attributable to their contributors and must identify their source tier.
+- Open the [community quickstart](./community/quickstart/quickstart.md).
+- Browse the [starter remix templates](./community/remix-templates/starter-templates.md).
 
-No public license is included. All rights and permissions remain with their respective owners.
+## Community use
 
-## Contributions
+Same recognizable Yuki. Different people's ideas.
 
-Keep the repository private unless authorized. Proposed canon changes require a Tier 1 or Tier 2 source, a source-register entry, and explicit review. Creative examples must be labeled as interpretations. Never replace the canonical turnaround with generated art. See [`docs/contribution-guide.md`](docs/contribution-guide.md).
+Community creations are unofficial by default. The Engine separates verified canon, community convention, historical grounding, and creative interpretation instead of inventing lore as official.
 
+Suggested credit:
+
+> Yuki / YUKI.EXE belongs to the Y2K Dotcom ecosystem. Community-created scene using the Yuki Community Engine by Nosimaj Media.
+
+This is a creative-production tool. It does not provide token trading advice, price targets, or financial promises.
+
+Learn more at [Y2K Dotcom](https://www.y2kdotcom.xyz/) and [Nosimaj Media](https://nosimaj.com).

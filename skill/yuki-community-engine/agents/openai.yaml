@@ -1,0 +1,4 @@
+interface:
+  display_name: "Yuki Community Engine"
+  short_description: "Create canon-safe Yuki media and stories"
+  default_prompt: "Use $yuki-community-engine to make a Y2K-era scene with Yuki in an internet café."
