@@ -1,0 +1,5 @@
+interface:
+  display_name: "Yuki Community Engine"
+  short_description: "Canon-safe Yuki media and story workflows"
+  default_prompt: "Use $yuki-community-engine to turn my Yuki concept into a canon-preserving creative workflow."
+
