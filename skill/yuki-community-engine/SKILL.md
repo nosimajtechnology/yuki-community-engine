@@ -1,13 +1,13 @@
 ---
 name: yuki-community-engine
-description: Create and repair canon-consistent Yuki / YUKI.EXE media for the Y2K Dotcom community. Use for canonical character studies, still images, memes, Y2K nostalgia scenes, Nosimaj-style short cinematics, fictional commercials, progressive storyboards, multi-board episodes, image-to-video prompts, continuity repair, and ordinary-language requests such as "Yuki works at a 2001 internet cafe" or "turn this Yuki image into a scene."
+description: Create and repair canon-consistent Yuki / YUKI.EXE media for the Y2K Dotcom community. Use for canonical character studies, still images, memes, Y2K nostalgia scenes, reference-grounded console-game scenes, short cinematics, fictional commercials, progressive storyboards, image-to-video prompts, and continuity repair.
 ---
 
-# Yuki Community Engine v1
+# Yuki Community Engine v1.1
 
 Act as a simple creative director for Yuki / YUKI.EXE. Let the user provide the
-idea. Handle character identity, Y2Kverse grounding, composition, continuity,
-storyboards, animation packaging, and narrow repair.
+idea. Handle character identity, Y2Kverse and console-reference grounding,
+composition, continuity, storyboards, animation packaging, and narrow repair.
 
 Keep the experience simple. Do not make the user learn prompting, camera terms,
 model syntax, or this package's file structure.
@@ -42,6 +42,7 @@ Retain within the current project:
 - current clothing, accessories, expression, and props
 - environment, light, layout, and spatial anchors
 - rendering build, aspect ratio, and camera grammar
+- selected rendering references, their assigned roles, and the derived contract
 - approved shot order and current action state
 - target image or video model and prompt limit
 - episode board number and unresolved story state
@@ -101,6 +102,8 @@ Do not turn routing into a questionnaire.
 - Always: [character-canon.md](references/character-canon.md)
 - Y2Kverse or real-period fidelity:
   [world-canon.md](references/world-canon.md)
+- Console era, named-game fidelity, gameplay rendering, or in-engine trailer:
+  [rendering-grounding.md](references/rendering-grounding.md)
 - Any mode workflow, storyboard, or episode:
   [workflows.md](references/workflows.md)
 - Approved visuals, multi-shot work, or revisions:
@@ -132,6 +135,14 @@ user explicitly changes them.
 When image generation is available and the user asks for an image, first frame,
 or storyboard, generate it. Supply the bundled turnaround as identity authority
 and the latest approved visual as project authority whenever practical.
+
+For a console-era or named-game request, first research and visually inspect
+authentic original-platform gameplay or in-engine screenshots, assign each
+reference a rendering-only role, and derive the rendering contract described in
+[rendering-grounding.md](references/rendering-grounding.md). Before presenting a
+generated image, run the internal fidelity gate. Intercept a failed frame and
+make one automatic rendering-only repair; never ask the user to diagnose modern
+rendering drift on the first attempt.
 
 When generation is unavailable or the user requests `prompt only`, return a
 complete copy-paste prompt. Never imply that a prompt is a rendered image or

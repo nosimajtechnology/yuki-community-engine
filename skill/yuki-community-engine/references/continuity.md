@@ -11,6 +11,9 @@ After a visual is approved, retain:
 - prop/vehicle silhouette, color, side, orientation, and damage state
 - environment layout, entrances, exits, furniture, landmarks, and horizon
 - time, weather, light direction, palette, and rendering contract
+- selected rendering-reference set and each reference's assigned role
+- approved geometry budget, texture density, material/lighting model, effects
+  density, draw distance, and capture characteristics
 - camera side, screen direction, action phase, and unresolved motion
 
 ## Progressive action
@@ -34,6 +37,8 @@ Before presenting a storyboard, verify:
 5. light and weather do not reset
 6. clothing and damage states progress rather than revert
 7. the last panel creates a viable next action state
+8. later panels do not gain polygons, PBR materials, denser effects, upgraded
+   lighting, remaster sharpness, or modern post-processing
 
 ## Narrow repair
 
@@ -72,9 +77,9 @@ DO NOT CHANGE:
 5. extra/missing limbs, fingers, gloves, or boots
 6. face or eye drift
 7. wardrobe/logo mutation
-8. geography, screen direction, or action reset
-9. prop/vehicle mutation
-10. rendering-era drift
+8. rendering-era drift from the approved screenshot-derived contract
+9. geography, screen direction, or action reset
+10. prop/vehicle mutation
 11. decorative errors
 
 Repair one panel when one panel failed. Regenerate the full frame or board only

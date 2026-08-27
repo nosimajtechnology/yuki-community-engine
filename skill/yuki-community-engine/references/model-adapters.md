@@ -10,11 +10,12 @@ Include:
 1. scene and action
 2. canonical Yuki reference assignment
 3. latest approved project-image assignment when available
-4. wardrobe and props
-5. world and spatial layout
-6. rendering/style construction
-7. camera and composition
-8. decisive negative constraints
+4. gameplay-reference assignments when console grounding is triggered
+5. wardrobe and props
+6. world and spatial layout
+7. screenshot-derived rendering contract
+8. camera and composition
+9. decisive negative constraints
 
 When direct image generation is available, generate instead of returning only a
 prompt unless the user requests `prompt only`.
@@ -51,6 +52,11 @@ Assign the approved storyboard to shot order, composition, geography, action
 state, and rendering. Assign the canonical turnaround to Yuki's underlying
 identity. Do not ask a video model to redesign the storyboard.
 
+When console grounding was triggered, preserve the approved geometry budget,
+texture density, lighting/material model, effects density, draw distance,
+camera scale, and capture characteristics. Gameplay screenshots control only
+their assigned rendering or environment roles; they never redesign Yuki.
+
 ## Named models
 
 For Seedance, Kling, Sora, Higgsfield, or another model:
@@ -61,6 +67,9 @@ For Seedance, Kling, Sora, Higgsfield, or another model:
 - translate syntax without changing the story
 - keep exact voiceover separate when reliable in-model speech is unknown
 - avoid redundant style language that competes with the visual reference
+- avoid adapter wording such as `cinematic lighting`, `volumetric atmosphere`,
+  `photoreal materials`, or `ultra-detailed` when it would modernize an approved
+  console rendering contract
 
 If the interface is unverified, label controls `unverified or variable` and give
 a generic copy-paste prompt.
@@ -72,9 +81,9 @@ including spaces. Preserve, in order:
 
 1. Yuki identity and anti-drift constraints
 2. approved continuity and shot progression
-3. world/rendering contract
+3. screenshot-derived world/rendering contract
 4. motion and camera behavior
-5. decisive negatives
-6. atmosphere and optional flourishes
+5. decisive era and identity negatives
+6. atmosphere and optional decorative detail
 
 Report the measured count.
