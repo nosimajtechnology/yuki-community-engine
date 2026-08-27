@@ -1,5 +1,21 @@
 # Modes and Workflows
 
+## Reference-grounded console fidelity
+
+When the request names a console era, a specific game's fidelity, gameplay
+rendering, or an in-engine trailer, read `rendering-grounding.md` and insert this
+shared stage before the first generated image:
+
+```text
+IDEA -> ERA / GAME FIDELITY DETECTION -> AUTHENTIC SCREENSHOT SEARCH
+-> VISUAL INSPECTION -> REFERENCE ROLE ASSIGNMENT -> RENDERING CONTRACT
+-> IMAGE -> INTERNAL FIDELITY GATE
+```
+
+Apply this stage to STILL, SCENE, CLASSIC CINEMATIC, COMMERCIAL, and EPISODE
+only when triggered. Y2K settings, clean anime art, character studies, memes,
+and modern-rendering requests do not trigger it by themselves.
+
 ## CHARACTER
 
 Purpose: establish or study Yuki's canonical identity.
@@ -13,7 +29,8 @@ Do not create a story or animation package unless requested.
 Workflow:
 
 ```text
-IDEA -> IMAGE DIRECTION -> IMAGE -> NARROW REPAIR OR VARIATION
+IDEA -> IMAGE DIRECTION -> [GROUNDING WHEN TRIGGERED] -> IMAGE
+-> FIDELITY GATE WHEN TRIGGERED -> NARROW REPAIR OR VARIATION
 ```
 
 Generate one strong image. Include enough environment to explain the premise.
@@ -26,12 +43,16 @@ Purpose: one contained event around Yuki without the full approval pipeline.
 Default to a single image or concise scene concept. If the user asks to animate
 or expand it, promote the approved visual to CLASSIC CINEMATIC.
 
+When console fidelity is triggered, ground and gate the single image before
+presenting it.
+
 ## CLASSIC CINEMATIC
 
 Workflow:
 
 ```text
-IDEA -> CONCEPT -> GENESIS FRAME -> APPROVAL -> CONNECTED STORYBOARD
+IDEA -> CONCEPT -> [GROUNDING WHEN TRIGGERED] -> GENESIS FRAME
+-> FIDELITY GATE WHEN TRIGGERED -> APPROVAL -> CONNECTED STORYBOARD
 -> APPROVAL -> MODEL-NEUTRAL ANIMATION BRIEF -> MODEL PROMPT
 ```
 
@@ -40,7 +61,8 @@ continuous location or motivated travel between connected spaces. If the idea is
 already clear, skip concept options and create the genesis frame.
 
 The first frame locks identity, wardrobe, main props, world, light, rendering,
-geography, and tone. Do not expand a visibly wrong frame.
+geography, and tone. Do not show or expand a frame that fails the triggered
+rendering contract.
 
 ## MEME
 
@@ -57,7 +79,9 @@ Workflow:
 
 ```text
 PRODUCT OR SERVICE -> HOOK -> VISUAL PROGRESSION -> BRAND PUNCTUATION
--> GENESIS FRAME -> APPROVAL -> STORYBOARD -> APPROVAL -> ANIMATION PACKAGE
+-> [GROUNDING WHEN TRIGGERED] -> GENESIS FRAME
+-> FIDELITY GATE WHEN TRIGGERED -> APPROVAL -> STORYBOARD -> APPROVAL
+-> ANIMATION PACKAGE
 ```
 
 Treat fictional products seriously inside the world. Begin with an action,
@@ -97,6 +121,11 @@ Start the next board from that state. Do not restage the premise, replay the las
 action, teleport characters, repair damage, reset props, or change time of day
 without a visible transition.
 
+When console fidelity is triggered, ground the first genesis frame before Board
+1 and retain its reference set and rendering contract through every board. Do
+not expand a frame that fails the fidelity gate. Re-run the gate on each board
+before presenting it.
+
 Plan four boards by default. Add Board 5 only after stating in one sentence why
 Board 4 cannot deliver a clean payoff.
 
@@ -105,6 +134,8 @@ Board 4 cannot deliver a clean payoff.
 For every board:
 
 - use one rendering contract across all panels
+- retain the approved geometry budget, texture density, lighting model, effects
+  density, draw distance, and capture characteristics in every panel
 - preserve identical character and prop assets
 - use equal panels with thin gutters and no labels unless requested
 - progress one continuous action state

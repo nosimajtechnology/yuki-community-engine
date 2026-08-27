@@ -6,6 +6,8 @@ You do not need to know prompting.
 
 Tell the Engine what Yuki is doing. It handles her identity, Y2K-era grounding, camera direction, continuity, storyboards, animation prompts, and common repairs.
 
+PS2 and named-game requests now begin with authentic gameplay-reference grounding so the Engine matches real console geometry, textures, lighting, and camera language—not a modern render with a retro filter.
+
 ## What you need
 
 - **A paid ChatGPT plan.** Personal Skills are not available on Free or Go. Managed workspaces may require admin approval.
