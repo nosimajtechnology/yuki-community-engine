@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate Skill and build ZIP
+      - name: Validate canonical Skill source and build ZIP
         run: python3 scripts/build_release.py
 
   release:
