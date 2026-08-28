@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and build dist/yuki-community-engine.zip."""
+"""Validate the canonical Skill source and build its release ZIP."""
 
 import hashlib
 import re
@@ -9,13 +9,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILL_DIR = ROOT / "skill" / "yuki-community-engine"
+CANONICAL_MANIFEST = SKILL_DIR / "SKILL.md"
+ROOT_ENTRYPOINT = ROOT / "SKILL.md"
+CANONICAL_LINK = "skill/yuki-community-engine/SKILL.md"
 DIST = ROOT / "dist"
 ZIP_NAME = "yuki-community-engine.zip"
 MAX_FILES = 500
 MAX_UNCOMPRESSED_BYTES = 25 * 1024 * 1024
 MAX_ZIP_BYTES = 50 * 1024 * 1024
+MAX_ROOT_ENTRYPOINT_BYTES = 2 * 1024
 FIXED_TIME = (2026, 1, 1, 0, 0, 0)
 LINK = re.compile(r"\]\(([^)\s#]+)(?:#[^)]*)?\)")
+RETIRED_ROOT_PATHS = (
+    "adapters/adapter-contract.md",
+    "assets/canon/yuki-turnaround.png",
+    "canon/character/yuki-canon.md",
+    "engine/modes/modes.md",
+)
 
 
 def fail(message: str) -> None:
@@ -23,7 +33,28 @@ def fail(message: str) -> None:
     raise SystemExit(1)
 
 
+def validate_root_entrypoint() -> None:
+    if not ROOT_ENTRYPOINT.is_file():
+        fail("missing repository-level SKILL.md compatibility entry point")
+
+    text = ROOT_ENTRYPOINT.read_text(encoding="utf-8")
+    if ROOT_ENTRYPOINT.stat().st_size > MAX_ROOT_ENTRYPOINT_BYTES:
+        fail("root SKILL.md is too large to be a compatibility entry point")
+    if CANONICAL_LINK not in text:
+        fail(f"root SKILL.md must delegate to {CANONICAL_LINK}")
+    if "compatibility entry point" not in text.casefold():
+        fail("root SKILL.md must identify itself as a compatibility entry point")
+
+    retired = [path for path in RETIRED_ROOT_PATHS if path in text]
+    if retired:
+        fail(f"root SKILL.md contains retired implementation paths: {retired}")
+
+    print(f"OK   root SKILL.md delegates to {CANONICAL_LINK}")
+
+
 def validate() -> list[Path]:
+    validate_root_entrypoint()
+
     if not SKILL_DIR.is_dir():
         fail(f"missing {SKILL_DIR.relative_to(ROOT)}")
 
@@ -34,13 +65,13 @@ def validate() -> list[Path]:
         fail(f"{len(files)} files; maximum is {MAX_FILES}")
 
     manifests = [path for path in files if path.name.lower() == "skill.md"]
-    if len(manifests) != 1 or manifests[0].parent != SKILL_DIR:
-        fail("expected exactly one top-level SKILL.md")
+    if manifests != [CANONICAL_MANIFEST]:
+        fail("canonical package must contain exactly one top-level SKILL.md")
 
-    text = manifests[0].read_text(encoding="utf-8")
+    text = CANONICAL_MANIFEST.read_text(encoding="utf-8")
     front = re.match(r"^---\n(.*?)\n---\n", text, re.S)
     if not front:
-        fail("SKILL.md has no YAML frontmatter")
+        fail("canonical SKILL.md has no YAML frontmatter")
 
     fields = {
         line.split(":", 1)[0].strip(): line.split(":", 1)[1].strip()
@@ -48,9 +79,9 @@ def validate() -> list[Path]:
         if ":" in line
     }
     if set(fields) != {"name", "description"}:
-        fail("SKILL.md frontmatter must contain only name and description")
+        fail("canonical SKILL.md frontmatter must contain only name and description")
     if fields["name"] != "yuki-community-engine":
-        fail("SKILL.md name must be yuki-community-engine")
+        fail("canonical SKILL.md name must be yuki-community-engine")
 
     total = sum(path.stat().st_size for path in files)
     if total > MAX_UNCOMPRESSED_BYTES:
@@ -65,7 +96,7 @@ def validate() -> list[Path]:
             if not (path.parent / target).exists():
                 fail(f"{path.relative_to(ROOT)} links to missing '{target}'")
 
-    print(f"OK   {len(files)} files, {total} bytes")
+    print(f"OK   canonical package: {len(files)} files, {total} bytes")
     return files
 
 
@@ -82,9 +113,13 @@ def build(files: list[Path]) -> None:
             archive.writestr(info, path.read_bytes())
 
     with zipfile.ZipFile(output) as archive:
-        top_levels = {name.split("/", 1)[0] for name in archive.namelist()}
+        names = archive.namelist()
+        top_levels = {name.split("/", 1)[0] for name in names}
         if top_levels != {SKILL_DIR.name}:
             fail(f"unexpected ZIP roots: {sorted(top_levels)}")
+        manifests = [name for name in names if name.lower().endswith("/skill.md")]
+        if manifests != [f"{SKILL_DIR.name}/SKILL.md"]:
+            fail(f"unexpected Skill manifests in ZIP: {manifests}")
         if archive.testzip() is not None:
             fail("ZIP integrity check failed")
 
