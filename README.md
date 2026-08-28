@@ -56,7 +56,13 @@ You can name a mode or let the Engine choose.
 
 This turnaround is the visual authority bundled with the Engine. It locks Yuki's face, cyan hair, blue eyes, paired wing ornaments, chibi proportions, oversized gloves, blue-white boots, and recognizable silhouette. Scenes, expressions, poses, props, and requested outfits may change.
 
-![Yuki canonical character turnaround](./assets/canon/yuki-turnaround.png)
+![Yuki canonical character turnaround](./skill/yuki-community-engine/assets/yuki-canonical-reference.jpg)
+
+## Source of truth
+
+The installable, canonical Skill lives in [`skill/yuki-community-engine/`](./skill/yuki-community-engine/). The root [`SKILL.md`](./SKILL.md) is only a compatibility entry point for tools that scan repository roots; it delegates to the canonical manifest and contains no independent Engine rules.
+
+Releases package only the canonical directory. Contributors should make all Engine behavior, reference, and asset changes there. CI rejects a root entry point that stops delegating or starts carrying a second implementation.
 
 ## Need an idea?
 
