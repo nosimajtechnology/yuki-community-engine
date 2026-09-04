@@ -62,14 +62,21 @@ idea by creative intent:
   upload only the Genesis Frame as the literal opening frame.
 - **Direct Explore / T2V** — iterate quickly from a self-contained text prompt
   with no references.
-- **Character Lock / R2V** — use Yuki's canonical sheet first, then the Late-Z
-  sheet as style-only authority when that adapter is active.
+- **Character Lock / R2V** — the approved Late-Z Yuki sheet is `Image 1` and the
+  only default reference when Late-Z is active. Other styles retain their
+  existing reference setup.
 
 ## Canonical Yuki reference
 
 This turnaround is the visual authority bundled with the Engine. It locks Yuki's face, cyan hair, blue eyes, paired wing ornaments, chibi proportions, oversized gloves, blue-white boots, and recognizable silhouette. Scenes, expressions, poses, props, and requested outfits may change.
 
 ![Yuki canonical character turnaround](./skill/yuki-community-engine/assets/yuki-canonical-reference.jpg)
+
+## Style reference sheets
+
+### Late-Z Battle Cel
+
+![Yuki Late-Z Battle Cel character sheet](./skill/yuki-community-engine/assets/style-adapters/late-z-battle-cel/yuki-late-z-character-sheet-v1.png)
 
 ## Source of truth
 

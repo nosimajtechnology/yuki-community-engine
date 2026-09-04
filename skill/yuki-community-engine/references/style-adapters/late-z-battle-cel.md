@@ -43,6 +43,13 @@ underlying identity and construction, and the bundled Late-Z sheet to the
 adapter-specific visual translation. Assign any approved project image to
 current continuity. The adapter sheet never replaces the canonical identity.
 
+Exception for H3 Max R2V: upload only the bundled Late-Z Yuki sheet as `Image
+1` by default. For that route, it is the consolidated authority for identity,
+face, anatomy, costume, proportions, palette, linework, cel shading, and
+broadcast rendering. Do not also attach the canonical turnaround or raw
+broadcast captures unless the user requests them, the scene needs another
+narrow authority, or a failed result needs a targeted repair.
+
 ## Reference-role firewall
 
 Assign every supplied reference a primary role before generation:

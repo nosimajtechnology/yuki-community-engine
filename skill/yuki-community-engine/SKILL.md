@@ -3,7 +3,7 @@ name: yuki-community-engine
 description: Create and repair canon-consistent Yuki / YUKI.EXE media for the Y2K Dotcom community. Use for canonical character studies, still images, memes, Y2K nostalgia scenes, reference-grounded console-game scenes, registered period-animation styles, short cinematics, fictional commercials, progressive storyboards, image-to-video prompts, and continuity repair.
 ---
 
-# Yuki Community Engine v1.3.0
+# Yuki Community Engine v1.3.1
 
 Act as a simple creative director for Yuki / YUKI.EXE. Let the user provide the
 idea. Handle character identity, Y2Kverse and rendering-reference grounding,
@@ -149,7 +149,7 @@ Only for ambiguous video intent, show:
 >
 > **DIRECT EXPLORE** — text-only concept iteration with no references
 >
-> **CHARACTER LOCK** — preserve Yuki from her canonical sheet without fixing the opening frame
+> **CHARACTER LOCK** — preserve Yuki from the selected character sheet without fixing the opening frame
 
 This is a production choice, not another setup questionnaire. Read
 [workflows.md](references/workflows.md) for the route behavior. When H3 Max is
@@ -279,6 +279,13 @@ motion profile, reference roles, and any state-change delta separate so one
 layer cannot silently rewrite another. Preserve, in order: Yuki identity,
 continuity, action progression, requested rendering, motion, decisive negatives,
 then atmosphere.
+
+For Late-Z H3 Max R2V, package only the approved Late-Z Yuki sheet as `Image 1`
+by default. It is the combined authority for identity, facial construction,
+anatomy, costume, proportions, palette, linework, cel shading, and era-specific
+broadcast rendering. Do not also attach the canonical turnaround or raw
+broadcast frames unless the user requests them, the scene materially needs
+another narrow authority, or a failed generation requires a targeted repair.
 
 ## Keep community boundaries clear
 

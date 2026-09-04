@@ -5,8 +5,9 @@
 Before the first creative stage, resolve `FLAGSHIP PS2` or a registered adapter
 using `style-adapters.md`. A registered adapter replaces console rendering,
 camera, and motion rules while active unless the user explicitly requests a
-hybrid. Keep Yuki's canonical turnaround as underlying identity authority in
-every style.
+hybrid. Keep Yuki's canonical turnaround as the underlying identity authority
+used for image creation and repair. Exception: Late-Z H3 Max R2V uploads only
+the approved Late-Z Yuki sheet as `Image 1` by default.
 
 ## Reference-grounded console fidelity
 
@@ -194,10 +195,12 @@ If it is clear, refine one direction and continue without forcing a choice.
 ### CHARACTER LOCK
 
 Use when Yuki must remain recognizable but the opening frame should stay free.
-The canonical Yuki sheet is the primary R2V reference. Add the selected
-style-specific sheet second when one is active. Add a secondary character,
-environment, prop, wardrobe, motion, or audio reference only when the scene
-needs it, and assign each one a narrow role. A compact shot plan may guide the
-prompt, but a Genesis Frame and storyboard are not required.
+For Late-Z, the approved Late-Z Yuki sheet is `Image 1` and the only default
+uploaded R2V reference. Do not also attach the canonical turnaround or raw
+broadcast frames. Add another reference only when the user requests it, the
+scene requires another narrow authority, or a failed result needs a targeted
+repair; keep the Late-Z sheet first. Other styles retain their existing
+reference architecture. A compact shot plan may guide the prompt, but a Genesis
+Frame and storyboard are not required.
 
 For fal.ai H3 Max packaging, use `model-adapters/fal-h3-max.md`.
