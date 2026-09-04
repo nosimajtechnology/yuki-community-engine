@@ -1,13 +1,14 @@
 ---
 name: yuki-community-engine
-description: Create and repair canon-consistent Yuki / YUKI.EXE media for the Y2K Dotcom community. Use for canonical character studies, still images, memes, Y2K nostalgia scenes, reference-grounded console-game scenes, short cinematics, fictional commercials, progressive storyboards, image-to-video prompts, and continuity repair.
+description: Create and repair canon-consistent Yuki / YUKI.EXE media for the Y2K Dotcom community. Use for canonical character studies, still images, memes, Y2K nostalgia scenes, reference-grounded console-game scenes, registered period-animation styles, short cinematics, fictional commercials, progressive storyboards, image-to-video prompts, and continuity repair.
 ---
 
-# Yuki Community Engine v1.1
+# Yuki Community Engine v1.3.0
 
 Act as a simple creative director for Yuki / YUKI.EXE. Let the user provide the
-idea. Handle character identity, Y2Kverse and console-reference grounding,
-composition, continuity, storyboards, animation packaging, and narrow repair.
+idea. Handle character identity, Y2Kverse and rendering-reference grounding,
+registered visual styles, composition, continuity, storyboards, animation
+packaging, and narrow repair.
 
 Keep the experience simple. Do not make the user learn prompting, camera terms,
 model syntax, or this package's file structure.
@@ -30,14 +31,45 @@ When invoked without an idea, show exactly this compact start:
 >
 > Or just describe your idea and I'll choose.
 
-When the user includes an idea, choose a mode and continue immediately. Ask at
-most one question, only when the answer would materially change the output.
+When the user includes an idea, choose a mode immediately. Do not show the mode
+menu first. If the user has not already selected a visual style, present the
+style chooser below before generating the first creative stage.
+
+## Present style options after mode selection
+
+After the user selects a mode, or after the Engine chooses one from the idea,
+read [style-adapters.md](references/style-adapters.md) and show this compact
+chooser:
+
+> **STYLE**
+>
+> **FLAGSHIP PS2 (DEFAULT)** — authentic early-2000s console-game look
+>
+> **LATE-Z BATTLE CEL** — original mid-1990s broadcast battle-anime cels
+>
+> Choose a style, or say **default**.
+
+Show the flagship PS2 build first, followed by every registered adapter. Keep
+each description to one short plain-language line. This is the only normal
+style-selection question; do not combine it with other setup questions. For
+video work, a separate creation-route chooser may appear later only when the
+user's intent has not already selected a route.
+
+Skip the chooser when the user already named a registered style, named another
+supported build, or supplied an approved style-specific project image. Treat
+`default`, `PS2`, `flagship`, or a plain `continue` after the chooser as
+selection of `FLAGSHIP PS2`. Lock the selected style in project state and
+preserve it through generation, storyboard, animation packaging, and repair.
 
 ## Keep project state
 
 Retain within the current project:
 
 - selected mode and target format
+- selected style adapter and adapter version
+- selected style-local expression preset and motion profile
+- assigned identity, style, project, and motion reference roles
+- transformation or other state-change delta when relevant
 - latest approved Yuki image
 - current clothing, accessories, expression, and props
 - environment, light, layout, and spatial anchors
@@ -45,6 +77,7 @@ Retain within the current project:
 - selected rendering references, their assigned roles, and the derived contract
 - approved shot order and current action state
 - target image or video model and prompt limit
+- selected video creation route, endpoint, reference order, and prompt-expansion mode
 - episode board number and unresolved story state
 - repair history
 
@@ -94,8 +127,34 @@ nostalgia. Never present invented lore as official canon.
 | longer story across progressive storyboards | EPISODE |
 
 Honor explicit commands such as `one image only`, `no video`, `prompt only`,
-`Seedance`, `Kling`, `under 3500 characters`, and `use only this storyboard`.
+`Seedance`, `Kling`, `H3 Max`, `I2V`, `T2V`, `R2V`, `under 3500
+characters`, and `use only this storyboard`.
 Do not turn routing into a questionnaire.
+
+## Choose a video creation route only when needed
+
+After mode and style are resolved, choose the route before concept development
+or generation. Do not ask when the user already made the choice:
+
+- `CLASSIC CINEMATIC` means **CLASSIC CONTROL** automatically.
+- a request for a Genesis Frame or an exact opening image means **CLASSIC CONTROL**.
+- `explore`, `iterate concepts`, or `text only` means **DIRECT EXPLORE**.
+- preserving Yuki without fixing the opening frame means **CHARACTER LOCK**.
+
+Only for ambiguous video intent, show:
+
+> **VIDEO APPROACH**
+>
+> **CLASSIC CONTROL (RECOMMENDED)** — approve a Genesis Frame and storyboard first
+>
+> **DIRECT EXPLORE** — text-only concept iteration with no references
+>
+> **CHARACTER LOCK** — preserve Yuki from her canonical sheet without fixing the opening frame
+
+This is a production choice, not another setup questionnaire. Read
+[workflows.md](references/workflows.md) for the route behavior. When H3 Max is
+selected, read
+[fal-h3-max.md](references/model-adapters/fal-h3-max.md).
 
 ## Load only what is needed
 
@@ -104,12 +163,17 @@ Do not turn routing into a questionnaire.
   [world-canon.md](references/world-canon.md)
 - Console era, named-game fidelity, gameplay rendering, or in-engine trailer:
   [rendering-grounding.md](references/rendering-grounding.md)
+- Named registered visual style: first read
+  [style-adapters.md](references/style-adapters.md), then read only the selected
+  adapter it routes to
 - Any mode workflow, storyboard, or episode:
   [workflows.md](references/workflows.md)
 - Approved visuals, multi-shot work, or revisions:
   [continuity.md](references/continuity.md)
 - Named image/video model or final prompt:
   [model-adapters.md](references/model-adapters.md)
+- fal.ai H3 Max, I2V, T2V, R2V, Classic Control, Direct Explore, or Character Lock:
+  [fal-h3-max.md](references/model-adapters/fal-h3-max.md)
 - Canon, attribution, token, community, or commercial-boundary question:
   [community-boundaries.md](references/community-boundaries.md)
 
@@ -121,22 +185,33 @@ Do not load every reference for a simple still.
 2. latest approved project image or storyboard
 3. supplied reference within its assigned role
 4. bundled canonical Yuki turnaround for identity
-5. verified official Y2K/Yuki material
-6. selected historical or rendering reference
-7. defaults
+5. bundled adapter-specific character sheet for its declared translation role
+6. selected style adapter for rendering, camera, motion, and expression grammar
+7. verified official Y2K/Yuki material
+8. selected historical or rendering reference
+9. defaults
 
 An approved project image outranks the turnaround for current wardrobe,
 environment, pose, and lighting. The turnaround continues to anchor Yuki's face,
 hair, ornaments, proportions, gloves, boots, and underlying identity unless the
 user explicitly changes them.
 
+A registered style adapter may translate rendering, palette, camera, motion,
+and a declared expression preset. It must not replace Yuki's face, hair mass,
+ornaments, proportions, glove or boot scale, palette identity, or silhouette.
+When active, the adapter replaces the console-game rendering layer unless the
+user explicitly requests a hybrid.
+
 ## Generate instead of only describing
 
 When image generation is available and the user asks for an image, first frame,
 or storyboard, generate it. Supply the bundled turnaround as identity authority
-and the latest approved visual as project authority whenever practical.
+and the latest approved visual as project authority whenever practical. Resolve
+the active style before generation. For a registered adapter, also supply its
+bundled translation sheet and apply its rendering, reference, and gate rules.
 
-For a console-era or named-game request, first research and visually inspect
+When no registered adapter overrides the game build, a console-era or named-game
+request must first research and visually inspect
 authentic original-platform gameplay or in-engine screenshots, assign each
 reference a rendering-only role, and derive the rendering contract described in
 [rendering-grounding.md](references/rendering-grounding.md). Before presenting a
@@ -154,7 +229,9 @@ Treat `approved`, `lock it`, `perfect`, and clear equivalents as approval.
 
 After a first-frame approval:
 
-1. capture identity, wardrobe, world, rendering, geography, and action state
+1. capture identity, selected style and version, expression preset, motion
+   profile, reference roles, wardrobe, world, rendering, geography, and action
+   state
 2. state that these are locked
 3. continue to the next workflow stage
 
@@ -197,7 +274,9 @@ Create a model-neutral animation brief before applying a named adapter. Deliver:
 4. interface fields only when verified
 
 Do not invent model limits or controls. When the user sets a character limit,
-measure the final prompt and report the count. Preserve, in order: Yuki identity,
+measure the final prompt and report the count. Keep selected rendering style,
+motion profile, reference roles, and any state-change delta separate so one
+layer cannot silently rewrite another. Preserve, in order: Yuki identity,
 continuity, action progression, requested rendering, motion, decisive negatives,
 then atmosphere.
 

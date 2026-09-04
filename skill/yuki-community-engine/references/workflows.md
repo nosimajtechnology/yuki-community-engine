@@ -1,5 +1,13 @@
 # Modes and Workflows
 
+## Resolve the visual style first
+
+Before the first creative stage, resolve `FLAGSHIP PS2` or a registered adapter
+using `style-adapters.md`. A registered adapter replaces console rendering,
+camera, and motion rules while active unless the user explicitly requests a
+hybrid. Keep Yuki's canonical turnaround as underlying identity authority in
+every style.
+
 ## Reference-grounded console fidelity
 
 When the request names a console era, a specific game's fidelity, gameplay
@@ -13,8 +21,9 @@ IDEA -> ERA / GAME FIDELITY DETECTION -> AUTHENTIC SCREENSHOT SEARCH
 ```
 
 Apply this stage to STILL, SCENE, CLASSIC CINEMATIC, COMMERCIAL, and EPISODE
-only when triggered. Y2K settings, clean anime art, character studies, memes,
-and modern-rendering requests do not trigger it by themselves.
+only when triggered and no registered adapter overrides the game build. Y2K
+settings, clean anime art, character studies, memes, and modern-rendering
+requests do not trigger it by themselves.
 
 ## CHARACTER
 
@@ -134,6 +143,8 @@ Board 4 cannot deliver a clean payoff.
 For every board:
 
 - use one rendering contract across all panels
+- retain the selected style adapter, adapter version, style-local expression
+  preset, motion profile, and assigned reference roles across every panel
 - retain the approved geometry budget, texture density, lighting model, effects
   density, draw distance, and capture characteristics in every panel
 - preserve identical character and prop assets
@@ -146,3 +157,47 @@ For every board:
 
 A storyboard is previsualization for connected footage, not a collage of concept
 variations.
+
+## Video creation routes
+
+Resolve this after mode and style, before developing concepts or generating a
+video source. Skip the chooser when intent already makes the route clear.
+
+### CLASSIC CONTROL
+
+Use for a polished scene whose opening composition, continuity, and edit need
+approval. It is automatic for CLASSIC CINEMATIC.
+
+```text
+SEED IDEA -> STYLE -> OPTIMIZED CONCEPT -> GPT IMAGE 2 GENESIS FRAME
+-> SELECTED-STYLE GATE -> APPROVAL -> GPT IMAGE 2 STORYBOARD -> APPROVAL
+-> MODEL-NEUTRAL ANIMATION BRIEF -> H3 MAX I2V PROMPT
+```
+
+Upload the approved Genesis Frame as the literal I2V opening frame. The
+storyboard remains planning and editorial authority; do not upload it to H3 Max
+by default. Use its shot order, geography, action states, and transitions in the
+prompt. The canonical and selected style sheets remain upstream identity and
+style authorities used to create and repair the frame.
+
+### DIRECT EXPLORE
+
+Use for fast, free concept iteration. Send no image, video, or audio reference.
+The T2V prompt must fully describe Yuki, the selected rendering style, setting,
+action, camera, continuity, and ending. Identity is interpretive rather than
+canon-locked; after repeated drift, recommend CHARACTER LOCK or CLASSIC CONTROL
+instead of bloating the text prompt.
+
+If a seed idea is loose, offer no more than three distinct T2V-ready concepts.
+If it is clear, refine one direction and continue without forcing a choice.
+
+### CHARACTER LOCK
+
+Use when Yuki must remain recognizable but the opening frame should stay free.
+The canonical Yuki sheet is the primary R2V reference. Add the selected
+style-specific sheet second when one is active. Add a secondary character,
+environment, prop, wardrobe, motion, or audio reference only when the scene
+needs it, and assign each one a narrow role. A compact shot plan may guide the
+prompt, but a Genesis Frame and storyboard are not required.
+
+For fal.ai H3 Max packaging, use `model-adapters/fal-h3-max.md`.

@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.3.0 — 2026-09-04
+
+- Added the Late-Z Battle Cel adapter and bundled Yuki translation sheet.
+- Added H3 Max Classic Control (I2V), Direct Explore (T2V), and Character Lock
+  (R2V) routes with explicit reference-role ordering.
+- Preserved the classic Genesis Frame → storyboard workflow while translating
+  the approved board into a chronological H3 Max prompt.
+- Added seed optimization, verified fal.ai fields, model-aware staging, and
+  route-specific repair guidance.
+
 ## v1.1.0 — 2026-08-27
 
 - Added authentic original-platform screenshot grounding for PS2, named-game,

@@ -4,6 +4,9 @@
 
 After a visual is approved, retain:
 
+- selected style adapter and version, style-local expression preset, motion
+  profile, and assigned identity/style/project/motion reference roles
+- any transformation pre-state, change-only delta, and post-state
 - Yuki's exact face, eyes, hair shape, hair length, ornaments, body proportions,
   glove scale, boot scale, and current expression
 - current wardrobe, wear, accessories, and carried objects
@@ -39,6 +42,8 @@ Before presenting a storyboard, verify:
 7. the last panel creates a viable next action state
 8. later panels do not gain polygons, PBR materials, denser effects, upgraded
    lighting, remaster sharpness, or modern post-processing
+9. a registered adapter does not drift toward modern digital anime, promotional
+   art, another period style, or the flagship PS2 build
 
 ## Narrow repair
 
@@ -78,9 +83,10 @@ DO NOT CHANGE:
 6. face or eye drift
 7. wardrobe/logo mutation
 8. rendering-era drift from the approved screenshot-derived contract
-9. geography, screen direction, or action reset
-10. prop/vehicle mutation
-11. decorative errors
+9. registered style-adapter drift
+10. geography, screen direction, or action reset
+11. prop/vehicle mutation
+12. decorative errors
 
 Repair one panel when one panel failed. Regenerate the full frame or board only
 when several protected layers conflict or the authority itself is unusable.

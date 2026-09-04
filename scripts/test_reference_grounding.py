@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Instruction-level regression checks for v1.1 reference grounding."""
+"""Instruction-level regression checks for v1.3 grounding and video routes."""
 
 from pathlib import Path
 
@@ -53,9 +53,17 @@ def main() -> None:
     )
     require(
         SKILL / "references" / "model-adapters.md",
-        "gameplay-reference assignments",
+        "assigned style or gameplay references",
         "screenshot-derived rendering contract",
         "volumetric atmosphere",
+    )
+    require(
+        SKILL / "references" / "model-adapters" / "fal-h3-max.md",
+        "minimax/h3-max/image-to-video",
+        "minimax/h3-max/text-to-video",
+        "minimax/h3-max/reference-to-video",
+        "yuki-canonical-reference.jpg",
+        "yuki-late-z-character-sheet-v1.png",
     )
     require(
         ROOT / "examples" / "reference-grounding-regressions.md",
@@ -65,7 +73,7 @@ def main() -> None:
         "Modern rendering override",
         "Storyboard continuity",
     )
-    print("OK   reference-grounding instruction regressions A-E")
+    print("OK   reference-grounding regressions A-E and H3 Max routes")
 
 
 if __name__ == "__main__":

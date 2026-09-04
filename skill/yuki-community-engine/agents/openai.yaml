@@ -1,4 +1,14 @@
 interface:
-  display_name: "Yuki Community Engine"
-  short_description: "Create canon-safe Yuki media and stories"
-  default_prompt: "Use $yuki-community-engine to make a Y2K-era scene with Yuki in an internet café."
+  display_name: Yuki Community Engine
+  short_description: Create canon-safe Yuki media and stories
+  default_prompt: Use $yuki-community-engine to make a Y2K-era scene with Yuki in
+    an internet café.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
